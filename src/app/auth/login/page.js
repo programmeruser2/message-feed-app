@@ -12,6 +12,8 @@ export default function Page() {
       headers: {'Content-Type': 'application.json'}
     });
     if (res.status === 200) {
+      localStorage.setItem('username', username);
+      localStorage.setItem('auth', 'true');
       redirect('/feed');
     } else {  
       useErrorMsg((await res.json()).error);
