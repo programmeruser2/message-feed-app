@@ -1,5 +1,4 @@
 'use client';
-import { redirect } from 'next/navigation';
 import { useState } from 'react';
 export default function Page() {
   const [errorMsg, useErrorMsg] = useState('');
@@ -14,7 +13,7 @@ export default function Page() {
     if (res.status === 200) {
       localStorage.setItem('username', username);
       localStorage.setItem('auth', 'true');
-      redirect('/feed');
+      location.href = '/feed';
     } else {  
       useErrorMsg((await res.json()).error);
     }
