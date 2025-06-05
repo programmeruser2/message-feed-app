@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation';
 export default function Link({ href, children }) {
     return (
-        <a onClick={() => redirect(href)}>{children}</a>
+        <a className="text-blue-300 hover:underline" onClick={() => redirect(href)}>{children}</a>
     )
 }
 

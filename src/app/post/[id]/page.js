@@ -8,7 +8,9 @@ export default async function Page({ params }) {
   const post = await Post.findOne({ id });
   if (!post) notFound();
   return (
-    <PostView id={id} author={post.author} contents={post.contents} showMore={false} />
+    <div className="flex flex-col items-center">
+      <PostView id={id} author={post.author} contents={post.contents} showMore={false} />
+    </div>
   )
 }
 
