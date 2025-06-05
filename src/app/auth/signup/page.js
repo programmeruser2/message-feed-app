@@ -5,6 +5,11 @@ export default function Page() {
   async function signup(formData) {
     const username = formData.get('username');
     const password = formData.get('password');
+    const confirmPassword = formData.get('confirm-password');
+    if (password !== confirmPassword) {
+      useErrorMsg('passwords do not match');
+      return;
+    }
     const res = await fetch('/api/user', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
@@ -26,6 +31,8 @@ export default function Page() {
         <input className="border-black border-1" type="text" id="username" name="username"/> <br/>
         <label className="p-10" htmlFor="password">Password: </label>
         <input className="border-black border-1 m-1" type="password" id="password" name="password"/> <br/>
+        <label className="p-10" htmlFor="confirm-password">Confirm Password: </label>
+        <input className="border-black border-1 m-1" type="password" id="confirm-password" name="confirm-password"/> <br/>
         <input className="m-10 p-3 border-black border-1 hover:border-gray-100" value="Submit" type="submit"/>
       </form>
       <p className="text-red-600 mx-10">{errorMsg}</p>
